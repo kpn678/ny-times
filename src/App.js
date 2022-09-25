@@ -12,8 +12,7 @@ const App = () => {
   const updateStories = async () => {
     try {
       const listOfStories = await getStories();
-      setStories(listOfStories);
-      console.log(stories);
+      setStories(listOfStories.results);
     } catch (e) {
       console.log(e);
       setError('Oops, something went wrong, please try again!');
@@ -24,6 +23,7 @@ const App = () => {
     updateStories();
   }, []);
 
+  console.log(stories)
   return (
     <nav>
       <Link to={'/'} style={{textDecoration: 'none'}}>
