@@ -1,9 +1,13 @@
 import React from "react";
 import './Stories.css';
 
-const Stories = () => {
+const Stories = ({ title, byline, date }) => {
   return (
-    <h3>Story goes here</h3>
+    <section className='story-card'>
+      <h3>{title}</h3>
+      <p>{byline}</p>
+      <p>{date}</p>
+    </section>
   );
 }
 
