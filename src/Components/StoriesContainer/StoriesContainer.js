@@ -18,8 +18,8 @@ const StoriesContainer = ({ stories, loadDetails, topic }) => {
   return (
     <section className='stories-view'>
       {capitalizedTopic !== 'Home' || '' ? 
-        <h2>Top {capitalizedTopic} Stories for Today, {today}</h2> :
-        <h2> Top Stories for Today, {today}</h2>
+        <h2>Top {capitalizedTopic} Stories - {today}</h2> :
+        <h2> Top Stories - {today}</h2>
       }
       <section className='stories-holder'>
         {allStories}
