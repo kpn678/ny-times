@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import StoriesContainer from './Components/StoriesContainer/StoriesContainer';
-import { Link, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { getStories } from './apiCalls';
 import DetailedPage from './Components/DetailedPage/DetailedPage';
+import NavBar from './Components/NavBar/NavBar';
 
 const App = () => {
   const [stories, setStories] = useState([]);
@@ -30,11 +31,7 @@ const App = () => {
 
   return (
     <>
-      <nav>
-        <Link to={'/'} style={{textDecoration: 'none'}}>
-          <h1>NY Times News Reader</h1>
-        </Link>
-      </nav>
+      <NavBar />
       <main>
         <Route 
           exact path='/' render={() => {
