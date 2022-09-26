@@ -9,6 +9,9 @@ const StoriesContainer = ({ stories, loadDetails }) => {
       title={story.title}
       byline={story.byline}
       date={story.created_date.substr(0, 10)}
+      icon={story.multimedia[2].url} 
+      height={story.multimedia[2].height} 
+      width={story.multimedia[2].width} 
       loadDetails={loadDetails}
     />
   });
