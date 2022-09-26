@@ -1,4 +1,8 @@
 .story-card {
-  width: 25vw;
+  width: 20vw;
   text-align: center;
+}
+
+.story-title:hover {
+  text-decoration: underline;
 }

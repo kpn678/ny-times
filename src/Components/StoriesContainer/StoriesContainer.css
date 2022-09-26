@@ -9,5 +9,6 @@ h2 {
 .stories-holder {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  row-gap: 5vh;
   justify-items: center;
 }
