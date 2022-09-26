@@ -6,14 +6,13 @@ import { getStories } from './apiCalls';
 import DetailedPage from './Components/DetailedPage/DetailedPage';
 
 const App = () => {
-
   const [stories, setStories] = useState([]);
   const [error, setError] = useState('');
   const [match, setMatch] = useState({});
 
-  const updateStories = async () => {
+  const loadStories = async () => {
     try {
-      const listOfStories = await getStories();
+      const listOfStories = await getStories('home');
       setStories(listOfStories.results);
     } catch (e) {
       console.log(e);
@@ -22,7 +21,7 @@ const App = () => {
   }
 
   useEffect(() => {
-    updateStories();
+    loadStories();
   }, []);
 
   const loadDetails = (articleTitle) => {
@@ -30,26 +29,25 @@ const App = () => {
   }
 
   return (
-    <nav>
-      <Link to={'/'} style={{textDecoration: 'none'}}>
-        <h1>NY Times News Reader</h1>
-      </Link>
-      <Route 
-        exact path='/' render={() => {
-          return (
-            <StoriesContainer stories={stories} loadDetails={loadDetails} />
-          );
-        }}
-      />
-
-      <Route
-        path='/details' render={() => {
-          return (
-            <DetailedPage match={match} />
-          );
-        }}
-      />
-    </nav>
+    <>
+      <nav>
+        <Link to={'/'} style={{textDecoration: 'none'}}>
+          <h1>NY Times News Reader</h1>
+        </Link>
+      </nav>
+      <main>
+        <Route 
+          exact path='/' render={() => {
+            return (<StoriesContainer stories={stories} loadDetails={loadDetails} />);
+          }}
+        />
+        <Route
+          path='/details' render={() => {
+            return (<DetailedPage match={match} />);
+          }}
+        />
+      </main>
+    </>   
   );
 }
 
