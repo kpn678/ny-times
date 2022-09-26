@@ -9,6 +9,7 @@ const App = () => {
 
   const [stories, setStories] = useState([]);
   const [error, setError] = useState('');
+  const [match, setMatch] = useState({});
 
   const updateStories = async () => {
     try {
@@ -24,7 +25,12 @@ const App = () => {
     updateStories();
   }, []);
 
-  console.log(stories)
+  const loadDetails = (articleTitle) => {
+    setMatch(stories.find(story => story.title === articleTitle));
+  }
+
+  console.log(stories);
+
   return (
     <nav>
       <Link to={'/'} style={{textDecoration: 'none'}}>
@@ -33,7 +39,7 @@ const App = () => {
       <Route 
         exact path='/' render={() => {
           return (
-            <StoriesContainer stories={stories} />
+            <StoriesContainer stories={stories} loadDetails={loadDetails} />
           );
         }}
       />
@@ -41,8 +47,8 @@ const App = () => {
       <Route
         path='/details' render={() => {
           return (
-            <DetailedPage />
-          )
+            <DetailedPage match={match} />
+          );
         }}
       />
     </nav>
