@@ -1,4 +1,12 @@
 .topics-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+}
+
+.topic {
+  cursor: pointer;
+}
+
+.topic:hover {
+  text-decoration: underline;
 }

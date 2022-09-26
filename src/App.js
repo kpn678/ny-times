@@ -14,7 +14,9 @@ const App = () => {
   const loadStories = async () => {
     try {
       const listOfStories = await getStories('home');
-      setStories(listOfStories.results);
+      const list = listOfStories.results;
+      const filteredList = list.filter(story => story.title !== '')
+      setStories(filteredList);
     } catch (e) {
       console.log(e);
       setError('Oops, something went wrong, please try again!');
@@ -25,13 +27,25 @@ const App = () => {
     loadStories();
   }, []);
 
+  const updateStories = async (topic) => {
+    try {
+      const listOfStories = await getStories(topic);
+      const list = listOfStories.results
+      const filteredList = list.filter(story => story.title !== '')
+      setStories(filteredList);
+    } catch (e) {
+      console.log(e);
+      setError('Oops, something went wrong, please try again!');
+    };
+  }
+
   const loadDetails = (articleTitle) => {
     setMatch(stories.find(story => story.title === articleTitle));
   }
 
   return (
     <>
-      <NavBar />
+      <NavBar updateStories={updateStories} />
       <main>
         <Route 
           exact path='/' render={() => {
