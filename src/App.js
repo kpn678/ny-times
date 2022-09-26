@@ -3,11 +3,13 @@ import './App.css';
 import StoriesContainer from './Components/StoriesContainer/StoriesContainer';
 import { Link, Route } from 'react-router-dom';
 import { getStories } from './apiCalls';
+import DetailedPage from './Components/DetailedPage/DetailedPage';
 
 const App = () => {
 
   const [stories, setStories] = useState([]);
   const [error, setError] = useState('');
+  const [match, setMatch] = useState({});
 
   const updateStories = async () => {
     try {
@@ -23,7 +25,10 @@ const App = () => {
     updateStories();
   }, []);
 
-  console.log(stories)
+  const loadDetails = (articleTitle) => {
+    setMatch(stories.find(story => story.title === articleTitle));
+  }
+
   return (
     <nav>
       <Link to={'/'} style={{textDecoration: 'none'}}>
@@ -32,8 +37,16 @@ const App = () => {
       <Route 
         exact path='/' render={() => {
           return (
-            <StoriesContainer stories={stories} />
-          )
+            <StoriesContainer stories={stories} loadDetails={loadDetails} />
+          );
+        }}
+      />
+
+      <Route
+        path='/details' render={() => {
+          return (
+            <DetailedPage match={match} />
+          );
         }}
       />
     </nav>
