@@ -3,6 +3,7 @@ import './App.css';
 import StoriesContainer from './Components/StoriesContainer/StoriesContainer';
 import { Link, Route } from 'react-router-dom';
 import { getStories } from './apiCalls';
+import DetailedPage from './Components/DetailedPage/DetailedPage';
 
 const App = () => {
 
@@ -33,6 +34,14 @@ const App = () => {
         exact path='/' render={() => {
           return (
             <StoriesContainer stories={stories} />
+          );
+        }}
+      />
+
+      <Route
+        path='/details' render={() => {
+          return (
+            <DetailedPage />
           )
         }}
       />
