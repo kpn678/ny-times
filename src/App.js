@@ -29,8 +29,6 @@ const App = () => {
     setMatch(stories.find(story => story.title === articleTitle));
   }
 
-  console.log(stories);
-
   return (
     <nav>
       <Link to={'/'} style={{textDecoration: 'none'}}>
