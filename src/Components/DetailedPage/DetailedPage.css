@@ -1,0 +1,17 @@
+.detail-title, .byline {
+  font-weight: 700;
+}
+
+.article-img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.caption {
+  font-style: italic;
+}
+
+.tags {
+  font-size: 0.9rem;
+}
