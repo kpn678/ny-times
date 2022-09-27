@@ -10,6 +10,7 @@ const App = () => {
   const [stories, setStories] = useState([]);
   const [error, setError] = useState('');
   const [match, setMatch] = useState({});
+  const [topic, setTopic] = useState('');
 
   const loadStories = async () => {
     try {
@@ -30,6 +31,7 @@ const App = () => {
   const updateStories = async (topic) => {
     try {
       const listOfStories = await getStories(topic);
+      setTopic(topic);
       const list = listOfStories.results
       const filteredList = list.filter(story => story.title !== '')
       setStories(filteredList);
@@ -49,7 +51,7 @@ const App = () => {
       <main>
         <Route 
           exact path='/' render={() => {
-            return (<StoriesContainer stories={stories} loadDetails={loadDetails} />);
+            return (<StoriesContainer stories={stories} loadDetails={loadDetails} topic={topic} />);
           }}
         />
         <Route
