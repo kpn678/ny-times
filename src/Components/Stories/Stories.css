@@ -6,3 +6,15 @@
 .story-title:hover {
   text-decoration: underline;
 }
+
+@media screen and (max-width: 550px) {
+  .story-card {
+    width: 35vw;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .story-card {
+    width: 50vw;
+  }
+}

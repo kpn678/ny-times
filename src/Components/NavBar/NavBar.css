@@ -23,3 +23,21 @@ h1 {
 .topic:hover {
   text-decoration: underline;
 }
+
+@media screen and (max-width: 550px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  .topic {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  h1 {
+    font-size: 1.25rem;
+  }
+  .topic {
+    font-size: 0.75rem;
+  }
+}

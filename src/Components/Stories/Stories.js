@@ -12,8 +12,8 @@ const Stories = ({ story, loadDetails }) => {
       <Link to={'/details'} style={{textDecoration: 'none'}}>
         <h3 className='story-title' onClick={() => {loadDetails(story.title)}}>{story.title}</h3>
       </Link>
-      <p>{story.byline}</p>
-      <p>Published: {story.created_date.substr(0, 10)}</p>
+      <p className='story-byline'>{story.byline}</p>
+      <p className='story-date'>Published: {story.created_date.substr(0, 10)}</p>
     </section>
   );
 }
